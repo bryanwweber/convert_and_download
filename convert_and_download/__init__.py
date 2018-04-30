@@ -35,10 +35,10 @@ class DLconvertFileHandler(IPythonHandler):
 
         exporter = get_exporter(format, config=self.config, log=self.log)
         pdfs = []
-        self.log.info(path)
+
         path = path.strip('/').strip()
         paths = path.split('.ipynb')
-        self.log.info(paths)
+
         for path in paths:
             if not path:
                 continue
