@@ -99,7 +99,8 @@ class DLconvertFileHandler(IPythonHandler):
         # Force download if requested
         if self.get_argument('download', 'false').lower() == 'true':
             filename = 'final_output.pdf'
-            self.set_attachment_header(filename)
+            self.set_header('Content-Disposition',
+                            'attachment; filename="%s"' % filename)
 
         # MIME type
         if exporter.output_mimetype:
