@@ -23,7 +23,6 @@ define([
     function load_ipython_extension() {
 
         convert_and_download = function() {
-            var that = this;
             var selected = [];
             $('.list_item :checked').each(function(index, item) {
                 var parent = $(item).parent().parent();
