@@ -73,15 +73,15 @@ setup(
     #
     # This field corresponds to the "Home-Page" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#home-page-optional
-    # url='https://github.com/pypa/sampleproject',  # Optional
+    url='https://github.com/bryanwweber/convert_and_download',  # Optional
 
     # This should be your name or the name of the organization which owns the
     # project.
-    # author='The Python Packaging Authority',  # Optional
+    author='Bryan W. Weber',  # Optional
 
     # This should be a valid email address corresponding to the author listed
     # above.
-    # author_email='pypa-dev@googlegroups.com',  # Optional
+    author_email='bryan.w.weber@gmail.com',  # Optional
 
     # Classifiers help users find your project by categorizing it.
     #
@@ -149,9 +149,9 @@ setup(
     #
     # If using Python 2.6 or earlier, then these have to be included in
     # MANIFEST.in as well.
-    # package_data={  # Optional
-    #     'sample': ['package_data.dat'],
-    # },
+    package_data={  # Optional
+        'convert_and_download': ['static/main.js'],
+    },
 
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:
