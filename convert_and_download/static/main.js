@@ -43,8 +43,6 @@ define([
             w.location = url;
         };
 
-        console.log('What the hell?');
-
         $('<button/>')
             .addClass('convert-download-button btn btn-default btn-xs')
             .attr('title', 'Convert and Download selected')
@@ -52,12 +50,8 @@ define([
             .text('Convert and Download selected')
             .insertBefore('.shutdown-button')
             .on('click', convert_and_download);
-        // $('.convert-download-button').click($.proxy(convert_and_download, this));
-        // var full_action_name = Jupyter.actions.register(action, "convert-and-download", "convert_and_download");
-        //
-        // Jupyter.toolbar.add_buttons_group([full_action_name]);
+
     };
-    // <button title="{% trans %}Convert and Download selected{% endtrans %}" aria-label="{% trans %}Convert and Download selected{% endtrans %}" class="convert-download-button btn btn-default btn-xs">{% trans %}Convert and Download{% endtrans %}</button>
 
     return {
         load_ipython_extension: load_ipython_extension
