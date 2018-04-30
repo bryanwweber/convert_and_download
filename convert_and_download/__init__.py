@@ -35,10 +35,14 @@ class DLconvertFileHandler(IPythonHandler):
 
         exporter = get_exporter(format, config=self.config, log=self.log)
         pdfs = []
-
-        path = path.strip('/')
-        paths = path.split('/')
+        self.log.info(path)
+        path = path.strip('/').strip()
+        paths = path.split('.ipynb')
+        self.log.info(paths)
         for path in paths:
+            if not path:
+                continue
+            path += '.ipynb'
             # If the notebook relates to a real file (default contents manager),
             # give its path to nbconvert.
             if hasattr(self.contents_manager, '_get_os_path'):
@@ -94,7 +98,7 @@ class DLconvertFileHandler(IPythonHandler):
 
         # Force download if requested
         if self.get_argument('download', 'false').lower() == 'true':
-            filename = os.path.splitext(name)[0] + resources['output_extension']
+            filename = 'final_output.pdf'
             self.set_attachment_header(filename)
 
         # MIME type
