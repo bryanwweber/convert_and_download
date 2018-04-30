@@ -11,15 +11,6 @@ define([
     NotebookList,
     utils
 ) {
-    // "use strict";
-
-    // var action = {
-    //         icon: 'fa-comment-o', // a font-awesome class used on buttons, etc
-    //         help    : 'Convert to PDF and Download',
-    //         help_index : 'zz',
-    //         handler : convert_and_download
-    //     };
-
     function load_ipython_extension() {
 
         convert_and_download = function() {
