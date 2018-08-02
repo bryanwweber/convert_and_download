@@ -7,7 +7,9 @@ from notebook.utils import url_path_join
 from ipython_genutils import text
 
 from pdfrw import PdfWriter, PdfReader
-from thermohw.extract_attachments import ExtractAttachmentsPreprocessor
+import thermohw
+
+thermohw_dir = os.path.abspath(os.path.dirname(thermohw.__file__))
 
 
 def _jupyter_server_extension_paths():
@@ -35,7 +37,8 @@ class DLconvertFileHandler(IPythonHandler):
     @web.authenticated
     def get(self, format, path):
 
-        self.config.PDFExporter.preprocessors = [ExtractAttachmentsPreprocessor]
+        self.config.PDFExporter.preprocessors = [thermohw.ExtractAttachmentsPreprocessor]
+        self.config.PDFExporter.template_file = os.path.join(thermohw_dir, 'homework.tpl')
 
         exporter = get_exporter(format, config=self.config, log=self.log)
         exporter.writer.build_directory = '.'
