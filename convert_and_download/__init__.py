@@ -7,6 +7,7 @@ from notebook.utils import url_path_join
 from ipython_genutils import text
 
 from pdfrw import PdfWriter, PdfReader
+from thermohw.extract_attachments import ExtractAttachmentsPreprocessor
 
 
 def _jupyter_server_extension_paths():
@@ -26,6 +27,7 @@ def _jupyter_nbextension_paths():
         # _also_ in the `nbextension/` namespace
         require="convert_and_download/main")]
 
+
 class DLconvertFileHandler(IPythonHandler):
 
     SUPPORTED_METHODS = ('GET',)
@@ -33,7 +35,11 @@ class DLconvertFileHandler(IPythonHandler):
     @web.authenticated
     def get(self, format, path):
 
+        self.config.PDFExporter.preprocessors = [ExtractAttachmentsPreprocessor]
+
         exporter = get_exporter(format, config=self.config, log=self.log)
+        exporter.writer.build_directory = '.'
+
         pdfs = []
 
         path = path.strip('/').strip()
@@ -110,9 +116,9 @@ class DLconvertFileHandler(IPythonHandler):
         self.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
         self.finish(output)
 
+
 def load_jupyter_server_extension(nb_server_app):
-    """
-    Called when the extension is loaded.
+    """Call when the extension is loaded.
 
     Args:
         nb_server_app (NotebookWebApplication): handle to the Notebook webserver instance.
