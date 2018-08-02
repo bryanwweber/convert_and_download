@@ -60,6 +60,7 @@ define([
             .attr('aria-label', 'Convert and Download Selected')
             .text('Convert and Download Selected')
             .insertBefore('.shutdown-button')
+            .css('display', 'none')
             .on('click', convert_and_download);
 
     };
