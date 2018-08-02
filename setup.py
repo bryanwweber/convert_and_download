@@ -44,6 +44,22 @@ setup(
     # package_data={
     #     'convert_and_download': ['static/main.js'],
     # },
+    include_package_data=True,
+    data_files=[
+        # like `jupyter nbextension install --sys-prefix`
+        ("share/jupyter/nbextensions/convert_and_download", [
+            "convert_and_download/static/main.js",
+        ]),
+        # like `jupyter nbextension enable --sys-prefix`
+        ("etc/jupyter/nbconfig/tree.d", [
+            "jupyter-config/nbconfig/tree.d/convert_and_download.json"
+        ]),
+        # like `jupyter serverextension enable --sys-prefix`
+        ("etc/jupyter/jupyter_notebook_config.d", [
+            "jupyter-config/jupyter_notebook_config.d/convert_and_download.json"
+        ])
+    ],
+    zip_safe=False,
     # entry_points={
     #     'console_scripts': [
     #         'sample=sample:main',
