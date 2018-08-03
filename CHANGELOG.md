@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - New keywords to the `setup()` function
 
 ### Changed
+- Rename `DLconvertFileHandler` to `DLConvertHandler`
 
 ### Fixed
 - Fix route URL for dlconvert handler

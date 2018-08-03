@@ -38,7 +38,7 @@ def _jupyter_nbextension_paths():
         require="convert_and_download/main")]
 
 
-class DLconvertFileHandler(IPythonHandler):
+class DLConvertHandler(IPythonHandler):
 
     SUPPORTED_METHODS = ('GET',)
 
@@ -141,3 +141,4 @@ def load_jupyter_server_extension(nb_server_app):
     route_pattern = url_path_join(web_app.settings['base_url'],
                                   r"/dlconvert/{fmt_regex}{path_regex}".format(
                                   fmt_regex=_format_regex, path_regex=path_regex))
+    web_app.add_handlers(host_pattern, [(route_pattern, DLConvertHandler)])
