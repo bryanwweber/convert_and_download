@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Add all dependencies to `setup.py` and `meta.yaml`
+- Fix `ANACONDA_TOKEN` secure variable on Travis CI
 
 ### Removed
 
