@@ -16,7 +16,8 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda update -q --all
-  - conda config --append channels conda-forge bryanwweber
+  - conda config --append channels conda-forge
+  - conda config --add channels bryanwweber
   - conda install conda-build anaconda-client
   - conda info -a
   - conda list
