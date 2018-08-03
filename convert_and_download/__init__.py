@@ -8,7 +8,8 @@ import os
 import io
 
 from notebook.base.handlers import IPythonHandler, web, path_regex, FilesRedirectHandler
-from notebook.nbconvert.handlers import _format_regex, get_exporter
+from notebook.nbconvert.handlers import _format_regex
+from nbconvert import PDFExporter
 from notebook.utils import url_path_join
 from ipython_genutils import text
 
@@ -53,7 +54,7 @@ class DLConvertHandler(IPythonHandler):
         self.config.PDFExporter.preprocessors = [thermohw.ExtractAttachmentsPreprocessor]
         self.config.PDFExporter.template_file = os.path.join(thermohw_dir, 'homework.tpl')
 
-        exporter = get_exporter(format, config=self.config, log=self.log)
+        exporter = PDFExporter(config=self.config, log=self.log)
         exporter.writer.build_directory = '.'
 
         pdfs = []
