@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+- Fix route URL for dlconvert handler
 
 ### Removed
 

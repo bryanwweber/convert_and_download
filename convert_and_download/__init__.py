@@ -139,5 +139,5 @@ def load_jupyter_server_extension(nb_server_app):
     # _format_regex = r"(?P<format>\w+)"
     # path_regex = r"(?P<path>(?:(?:/[^/]+)+|/?))"
     route_pattern = url_path_join(web_app.settings['base_url'],
-                                  rf"/dlconvert/{{_format_regex}}{{path_regex}}")
-    web_app.add_handlers(host_pattern, [(route_pattern, DLconvertFileHandler)])
+                                  r"/dlconvert/{fmt_regex}{path_regex}".format(
+                                  fmt_regex=_format_regex, path_regex=path_regex))
