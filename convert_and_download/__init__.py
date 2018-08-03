@@ -46,6 +46,9 @@ class DLConvertHandler(IPythonHandler):
     @web.authenticated
     def get(self, format, path):
         """Handle the GET method call."""
+        if format != 'pdf':
+            self.log.exception('format must be pdf')
+            raise web.HTTPError(500, 'format must be pdf')
 
         self.config.PDFExporter.preprocessors = [thermohw.ExtractAttachmentsPreprocessor]
         self.config.PDFExporter.template_file = os.path.join(thermohw_dir, 'homework.tpl')
