@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
 ## [0.2.0] - 2018-AUG-03
 ### Added
 - New keywords to the `setup()` function
@@ -46,6 +55,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Convert and download multiple selected Notebooks
 - Automatically configure the extension to be used when installed
 
+[Unreleased]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.0...HEAD
 [0.2.0]: https://github.com/bryanwweber/convert_and_download/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/bryanwweber/convert_and_download/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/bryanwweber/convert_and_download/compare/v0.1.1...v0.1.2
