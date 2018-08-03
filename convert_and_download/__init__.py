@@ -6,6 +6,7 @@ them to a single PDF.
 
 import os
 import io
+from typing import List, Dict, TYPE_CHECKING, Union
 
 from notebook.base.handlers import IPythonHandler, web, path_regex, FilesRedirectHandler
 from notebook.nbconvert.handlers import _format_regex
@@ -16,19 +17,22 @@ from ipython_genutils import text
 from pdfrw import PdfWriter, PdfReader
 import thermohw
 
-from ._version import __version__
+if TYPE_CHECKING:
+    from notebook.notebookapp import NotebookWebApplication  # noqa: F401 (typing)
 
-thermohw_dir = os.path.abspath(os.path.dirname(thermohw.__file__))
+from ._version import __version__  # noqa: F401
+
+thermohw_dir: str = os.path.abspath(os.path.dirname(thermohw.__file__))
 
 
-def _jupyter_server_extension_paths():
+def _jupyter_server_extension_paths() -> List[Dict[str, str]]:
     return [{
         "module": "convert_and_download"
     }]
 
 
 # Jupyter Extension points
-def _jupyter_nbextension_paths():
+def _jupyter_nbextension_paths() -> List[Dict[str, str]]:
     return [dict(
         section="tree",
         # the path is relative to the `my_fancy_module` directory
@@ -45,7 +49,7 @@ class DLConvertHandler(IPythonHandler):
     SUPPORTED_METHODS = ('GET',)
 
     @web.authenticated
-    def get(self, format, path):
+    def get(self, format: str, path: str):
         """Handle the GET method call."""
         if format != 'pdf':
             self.log.exception('format must be pdf')
@@ -68,14 +72,17 @@ class DLConvertHandler(IPythonHandler):
             path += '.ipynb'
             # If the notebook relates to a real file (default contents manager),
             # give its path to nbconvert.
+            ext_resources_dir: Union[str, None]
+            basename: str
+            os_path: str
             if hasattr(self.contents_manager, '_get_os_path'):
                 os_path = self.contents_manager._get_os_path(path)
                 ext_resources_dir, basename = os.path.split(os_path)
             else:
                 ext_resources_dir = None
 
-            model = self.contents_manager.get(path=path)
-            name = model['name']
+            model: Dict[str, str] = self.contents_manager.get(path=path)
+            name: str = model['name']
             if model['type'] != 'notebook':
                 # not a notebook, redirect to files
                 return FilesRedirectHandler.redirect_to_files(self, path)
@@ -85,22 +92,25 @@ class DLConvertHandler(IPythonHandler):
             self.set_header('Last-Modified', model['last_modified'])
 
             # create resources dictionary
-            mod_date = model['last_modified'].strftime(text.date_format)
-            nb_title = os.path.splitext(name)[0]
+            mod_date: str = model['last_modified'].strftime(text.date_format)
+            nb_title: str = os.path.splitext(name)[0]
 
-            resource_dict = {
+            config_dir: str = self.application.settings['config_dir']
+
+            resource_dict: Dict[str, str] = {
                 "metadata": {
                     "name": nb_title,
                     "modified_date": mod_date
                 },
-                "config_dir": self.application.settings['config_dir']
+                "config_dir": config_dir,
             }
 
             if ext_resources_dir:
                 resource_dict['metadata']['path'] = ext_resources_dir
 
+            output: bytes
             try:
-                output, resources = exporter.from_notebook_node(
+                output, _ = exporter.from_notebook_node(
                     nb,
                     resources=resource_dict
                 )
@@ -123,18 +133,18 @@ class DLConvertHandler(IPythonHandler):
         if self.get_argument('download', 'false').lower() == 'true':
             filename = 'final_output.pdf'
             self.set_header('Content-Disposition',
-                            'attachment; filename="%s"' % filename)
+                            'attachment; filename="{}"'.format(filename))
 
         # MIME type
         if exporter.output_mimetype:
             self.set_header('Content-Type',
-                            '%s; charset=utf-8' % exporter.output_mimetype)
+                            '{}; charset=utf-8'.format(exporter.output_mimetype))
 
         self.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
         self.finish(output)
 
 
-def load_jupyter_server_extension(nb_server_app):
+def load_jupyter_server_extension(nb_server_app: 'NotebookWebApplication') -> None:
     """Call when the extension is loaded.
 
     Args:
