@@ -1,3 +1,9 @@
+"""Define a Jupyter Notebook extension to export Notebooks to PDF.
+
+This module takes the selected Jupyter Notebook files and converts
+them to a single PDF.
+"""
+
 import os
 import io
 
