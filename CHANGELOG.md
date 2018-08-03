@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+- Add all dependencies to `setup.py` and `meta.yaml`
 
 ### Removed
 
