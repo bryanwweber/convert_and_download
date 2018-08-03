@@ -17,6 +17,11 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
+with open(path.join(here, 'CHANGELOG.md')) as changelog_file:
+    changelog = changelog_file.read()
+
+long_description = readme + '\n\n' + changelog
+
 with open(path.join(here, 'convert_and_download', '_version.py')) as version_file:
     exec(version_file.read())
 
@@ -29,6 +34,7 @@ setup(
     url='https://github.com/bryanwweber/convert_and_download',
     author='Bryan W. Weber',
     author_email='bryan.w.weber@gmail.com',
+    license='BSD-3-Clause',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
@@ -36,22 +42,16 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
-    # keywords='sample setuptools development',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    keywords='jupyter notebook javascript pdf',
+    packages=find_packages(),
     install_requires=[
         'thermohw>=0.2,<1.0',
         'notebook>=5.5.0,<6.0',
         'ipython_genutils>=0.2.0,<1.0',
         'pdfrw>=0.4.0,<0.5.0',
     ],
-    # extras_require={
-    #     'dev': ['check-manifest'],
-    #     'test': ['coverage'],
-    # },
-    # package_data={
-    #     'convert_and_download': ['static/main.js'],
-    # },
     include_package_data=True,
     data_files=[
         # like `jupyter nbextension install --sys-prefix`
@@ -67,14 +67,10 @@ setup(
             "jupyter-config/jupyter_notebook_config.d/convert_and_download.json"
         ])
     ],
+    python_requires='~=3.6',
     zip_safe=False,
-    # entry_points={
-    #     'console_scripts': [
-    #         'sample=sample:main',
-    #     ],
-    # },
-    # project_urls={
-    #     'Bug Reports': 'https://github.com/bryanwweber/convert_and_download/issues',
-    #     'Source': 'https://github.com/bryanwweber/convert_and_download/',
-    # },
+    project_urls={
+        'Bug Reports': 'https://github.com/bryanwweber/convert_and_download/issues',
+        'Source': 'https://github.com/bryanwweber/convert_and_download/',
+    },
 )

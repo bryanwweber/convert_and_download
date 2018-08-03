@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+- New keywords to the `setup()` function
+
+### Changed
+
+### Fixed
+
+### Removed
+
 ## [0.1.3] - 2018-AUG-03
 ### Fixed
 - Add all dependencies to `setup.py` and `meta.yaml`
