@@ -34,12 +34,12 @@ test:
   #   - pytest -vv --pyargs convert_and_download
 
 about:
-  home: data['url']
+  home: {{ data['url'] }}
   license: BSD 3-Clause
   license_file: LICENSE
   license_family: BSD
 
-  summary: data['description']
-  description: data['long_description']
+  summary: {{ data['description'] }}
+  description: Convert one or more ipynb files to PDF, merge them, and download the resulting file.
   doc_url: https://bryanwweber.github.io/convert_and_download
-  dev_url: data['url']
+  dev_url: {{ data['url'] }}
