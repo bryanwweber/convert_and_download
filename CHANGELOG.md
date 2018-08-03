@@ -7,12 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - New keywords to the `setup()` function
+- Configuration for flake8 in setup.cfg
+- Start to add some typing
+- Add docstrings to the `DLConvertHandler` class and `get` instance method
 
 ### Changed
 - Rename `DLconvertFileHandler` to `DLConvertHandler`
+- Raise an error if the `format` passed to the `get` handler is not `pdf`
+- Directly use the `PDFExporter` rather than guessing the type
 
 ### Fixed
 - Fix route URL for dlconvert handler
+- Fix adding readme to the `long_description` in `setup.py`
 
 ### Removed
 
