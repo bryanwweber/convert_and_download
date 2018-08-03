@@ -39,11 +39,13 @@ def _jupyter_nbextension_paths():
 
 
 class DLConvertHandler(IPythonHandler):
+    """Handle converting and downloading a set of Notebooks to PDF."""
 
     SUPPORTED_METHODS = ('GET',)
 
     @web.authenticated
     def get(self, format, path):
+        """Handle the GET method call."""
 
         self.config.PDFExporter.preprocessors = [thermohw.ExtractAttachmentsPreprocessor]
         self.config.PDFExporter.template_file = os.path.join(thermohw_dir, 'homework.tpl')
