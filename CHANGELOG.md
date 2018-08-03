@@ -6,10 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Add docstring to `__init__.py`
+- Install `conda-verify` on Travis CI
 
 ### Changed
 
 ### Fixed
+- Secure variables for Travis CI need to be encrypted with the `--pro` flag
+- Conda recipe Jinja variable expansion
 
 ### Removed
 
