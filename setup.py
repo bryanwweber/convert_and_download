@@ -17,9 +17,12 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
+with open(path.join(here, 'convert_and_download', '_version.py')) as version_file:
+    exec(version_file.read())
+
 setup(
     name='convert_and_download',
-    version='0.0.2',
+    version=__version__,
     description='Convert and Download Jupyter Notebooks',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -30,13 +33,15 @@ setup(
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-        'License :: OSI Approved :: BSD 3-Clause License',
+        'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
     ],
     # keywords='sample setuptools development',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    install_requires=['thermohw'],
+    install_requires=[
+        'thermohw>=0.2,<1.0'
+    ],
     # extras_require={
     #     'dev': ['check-manifest'],
     #     'test': ['coverage'],

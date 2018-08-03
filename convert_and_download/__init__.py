@@ -9,6 +9,8 @@ from ipython_genutils import text
 from pdfrw import PdfWriter, PdfReader
 import thermohw
 
+from ._version import __version__
+
 thermohw_dir = os.path.abspath(os.path.dirname(thermohw.__file__))
 
 
