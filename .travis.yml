@@ -1,0 +1,36 @@
+sudo: false
+language: generic
+
+# Only build on tags
+if: tag IS present
+
+env:
+  global:
+    secure: NsX3b1GsdMnz8qQINIPl0jObfpkmWy8s8ICyPT1puOr8qUvO8w9wTxq3h39gwQPABy3fXnYZrX6+aLuog5l3TSYevdg3yTnDAmS8xudAZU/UPk56dOkJo9AVq/KcylWRvVM3xl3yViruYgdXCSQWZzQk0O23Vb7vKzhpYzH0rLrhbvc5fpcn3VZ71Fe1oL9FigdkW4VL+2kJ0ceXshigQCj68zeXeC+bD9kzkv3w1D8AShB1NIWMVgVJPupXTuRBTWcOOlYzpsMpx6Xn1M4cWVvZ1XDnby+JkqHuXwwRkv6P9WaPCw8ZBiceoUjI0F2g9uB+bwxVgTYWC6h6X1RnHysZrdaQ1hcPUE/DlJNSNGJ1uqWY2Szq09c+0zme3H7pERdBE6j6MerkP1pFP60Z7NTH+WtcBHu//8NbVhmDJEk2ZwFFScvKMbamejnRQjTbIywhue6Rcrkw+ir6FWuMAzZmvuPO5MZurywtwcXqJR1xBVQLnCo3C/YHFHf8MflMhQ4sdDJBNvIeFdPNOappVv5pIgEupBVNRcROiDyIpE51qyF9sxC11skDIVcW4FgxCxJqODqfc52LnYPZjYofJAxI4zKJY3nZYznrLCgY2m/RWD+VsTfstxZhOgA9EN943VIAoI94Bx0NnUX11mfN4vE1FhKWnt34DU4IitMYGew=
+
+install:
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - rm miniconda.sh
+  - source $HOME/miniconda/etc/profile.d/conda.sh && conda activate
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda update -q --all
+  - conda config --append channels conda-forge bryanwweber
+  - conda install conda-build anaconda-client
+  - conda info -a
+  - conda list
+
+script:
+  - conda build conda.recipe;
+  - anaconda -t $ANACONDA_TOKEN upload $HOME/miniconda/conda-bld/*/convert_and_download*.tar.bz2;
+
+deploy:
+  provider: pypi
+  user: bryanwweber
+  on:
+    tags: true
+  distributions: sdist bdist_wheel
+  skip_upload_docs: true
+  password:
+    secure: JYcvmkh2+MdKk6Ok6h/ZRholD93kbN+kwBcaDQP2igc72o+XKcJ2z8O7zEcnq3toYx/cv+KDqy1WxPWSSnGr1KM/2TcbhRv7xNrd/NKKWHT4OF5YokKqFydEBXwe4fjMG4VMGa4XtiDuRIeGcmocy0iLac3ubyWrumY9+jWxJmR42tf/+1sbH4LMCFBxXiXdhYBF4KDwP2fjdYXQKt1N6T48bhD3tQdt3pIZ6fgNBXJlyj9r2lqB53NuuMHwWR9ZCkIwf/0Xm/TEaEbTJFYVKhE363UvyHeWcJ6Vm8c0twDiKdz0oHeLSelT5Nmu6R4X17jugB5p/vUwzGxxTSDGC2Fl5+2HosF+a5XcvDe2io+ocEutXIUTqzqJUP95jgOPLhyAIuuCYsUukgw9r26BlP4SK6GBcwMX6OLMQeHZk57po71ZwYL6x6BHrzgmLqxOMDtu926op2JCajzbljSfyN8U0MCG7tMw627diJ4j0hJJfJXvjqyRgdNml4VFA7tKaSpdyrg+i74dJE5BgK5h7RHPs7zx67JFEjThZf5DZ9AKto/LSS3dQFM83Bzi+Xe0uQV0uU+f5VavGChwC+JbytjcAGab2bXtmQK/PkDx0BDJWS98tH5Dv5oTpfhZeyvf9ubnHX8c2geQtYudlk5TEcNl+5n1MNF2SLHbEm5jiw4=
