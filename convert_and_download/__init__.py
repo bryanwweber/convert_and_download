@@ -57,6 +57,7 @@ class DLConvertHandler(IPythonHandler):
 
         self.config.PDFExporter.preprocessors = [thermohw.ExtractAttachmentsPreprocessor]
         self.config.PDFExporter.template_file = os.path.join(thermohw_dir, 'homework.tpl')
+        self.config.PDFExporter.filters = {'convert_div': thermohw.convert_div}
 
         exporter = PDFExporter(config=self.config, log=self.log)
         exporter.writer.build_directory = '.'

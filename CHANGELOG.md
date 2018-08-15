@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Add `convert_div` filter from `thermohw` package to convert Bootstrap `alert-*` class divs to appropriate LaTeX environments
 
 ### Changed
 
