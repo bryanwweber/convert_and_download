@@ -8,8 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Bump minimum version of `thermohw` to 0.4.0
 
 ### Fixed
+- Add `convert_raw_html` filter to `PDFExporter` to match newer versions of `thermohw`
 
 ### Removed
 
