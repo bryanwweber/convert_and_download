@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+- Add `convert_raw_html` filter to `PDFExporter` to match newer versions of `thermohw`
 
 ### Removed
 
