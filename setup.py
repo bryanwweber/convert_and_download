@@ -47,7 +47,7 @@ setup(
     keywords='jupyter notebook javascript pdf',
     packages=find_packages(),
     install_requires=[
-        'thermohw>=0.2,<1.0',
+        'thermohw>=0.4,<1.0',
         'notebook>=5.5.0,<6.0',
         'ipython_genutils>=0.2.0,<1.0',
         'pdfrw>=0.4.0,<0.5.0',
