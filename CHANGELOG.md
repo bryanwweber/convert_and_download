@@ -4,15 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
-### Added
-
+## [0.2.3]
 ### Changed
 - Only run LaTeX once when converting
-
-### Fixed
-
-### Removed
 
 ## [0.2.2] - 2018-AUG-30
 ### Changed
@@ -67,7 +61,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Convert and download multiple selected Notebooks
 - Automatically configure the extension to be used when installed
 
-[Unreleased]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.2...HEAD
+[0.2.3]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/bryanwweber/convert_and_download/compare/v0.1.3...v0.2.0
