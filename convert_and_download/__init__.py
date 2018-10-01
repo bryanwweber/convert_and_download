@@ -59,6 +59,7 @@ class DLConvertHandler(IPythonHandler):
         self.config.PDFExporter.template_file = os.path.join(thermohw_dir, 'homework.tpl')
         self.config.PDFExporter.filters = {'convert_div': thermohw.convert_div,
                                            'convert_raw_html': thermohw.convert_raw_html}
+        self.config.PDFExporter.latex_count = 1
 
         exporter = PDFExporter(config=self.config, log=self.log)
         exporter.writer.build_directory = '.'
