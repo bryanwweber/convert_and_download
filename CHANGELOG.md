@@ -1,8 +1,11 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+
+<!-- markdownlint-disable MD022 MD032 MD024 -->
 
 ## [Unreleased]
 ### Added
@@ -10,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - "Convert and download selected" button text is now sentence case rather than title case
 - Conversion loop is simplified to be a single loop
+- Fix or ignore Markdown lint errors in CHANGELOG.md
 
 ### Fixed
 - Convert and download button is shown when files are selected with "Select all" checkbox
