@@ -7,9 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 <!-- markdownlint-disable MD022 MD032 MD024 -->
 
-## [Unreleased]
-### Added
-
+## [0.2.4] - 2019-JAN-19
 ### Changed
 - "Convert and download selected" button text is now sentence case rather than title case
 - Conversion loop is simplified to be a single loop
@@ -17,8 +15,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Convert and download button is shown when files are selected with "Select all" checkbox
-
-### Removed
 
 ## [0.2.3] - 2018-OCT-01
 ### Changed
@@ -77,7 +73,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Convert and download multiple selected Notebooks
 - Automatically configure the extension to be used when installed
 
-[Unreleased]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.3...HEAD
+[0.2.4]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.0...v0.2.1
