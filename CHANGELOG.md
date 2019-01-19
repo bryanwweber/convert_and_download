@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Conversion loop is simplified to be a single loop
 
 ### Fixed
+- Convert and download button is shown when files are selected with "Select all" checkbox
 
 ### Removed
 

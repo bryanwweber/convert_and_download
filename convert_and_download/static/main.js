@@ -13,16 +13,20 @@ define([
 
         var old_selection_changed = Jupyter.NotebookList.prototype._selection_changed;
         Jupyter.NotebookList.prototype._selection_changed = function () {
+            var that = this;
             old_selection_changed.call(this);
             var only_notebooks_selected = true;
             var checked = 0;
             $('.list_item :checked').each(function(index, item) {
                 var parent = $(item).parent().parent();
-                checked++;
-                if (only_notebooks_selected) {
-                    if (parent.data('type') !== 'notebook') {
-                        only_notebooks_selected = false;
-                    }
+                // If the item doesn't have an upload button, isn't the
+                // breadcrumbs and isn't the parent folder '..', then it can be selected.
+                // Breadcrumbs path == ''.
+                if (parent.find('.upload_button').length === 0 && parent.data('path') !== '' && parent.data('path') !== utils.url_path_split(that.notebook_path)[0]) {
+                    checked++;
+                    // Check that only_notebooks_selected is true and this item is a notebook
+                    // The && short-circuits the check if only_notebooks_selected is already false
+                    only_notebooks_selected = only_notebooks_selected && parent.data('type') === 'notebook';
                 }
             });
             if (checked >= 1 && only_notebooks_selected) {
