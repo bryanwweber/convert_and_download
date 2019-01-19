@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - "Convert and download selected" button text is now sentence case rather than title case
+- Conversion loop is simplified to be a single loop
 
 ### Fixed
 

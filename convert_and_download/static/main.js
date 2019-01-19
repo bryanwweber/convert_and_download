@@ -34,21 +34,13 @@ define([
 
         convert_and_download = function() {
             var selected = [];
+            var url = utils.url_path_join(utils.get_body_data("baseUrl"), 'dlconvert', 'pdf');
             $('.list_item :checked').each(function(index, item) {
                 var parent = $(item).parent().parent();
-                selected.push({
-                    name: parent.data('name'),
-                    path: parent.data('path'),
-                    type: parent.data('type')
-                });
-            });
-            var url = utils.url_path_join(utils.get_body_data("baseUrl"), 'dlconvert', 'pdf');
-            for (var i in selected) {
-                var item = selected[i];
-                if (item.type === 'notebook') {
-                    url = utils.url_path_join(url, utils.encode_uri_components(item.path));
+                if (parent.data('type') === 'notebook') {
+                    url = utils.url_path_join(url, utils.encode_uri_components(parent.data('path')));
                 }
-            }
+            });
             url = url + '?download=true';
             var w = window.open('', Jupyter._target);
             w.location = url;
