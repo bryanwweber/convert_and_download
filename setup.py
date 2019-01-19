@@ -60,12 +60,12 @@ setup(
         ]),
         # like `jupyter nbextension enable --sys-prefix`
         ("etc/jupyter/nbconfig/tree.d", [
-            "jupyter-config/nbconfig/tree.d/convert_and_download.json"
+            "jupyter-config/nbconfig/tree.d/convert_and_download.json",
         ]),
         # like `jupyter serverextension enable --sys-prefix`
         ("etc/jupyter/jupyter_notebook_config.d", [
-            "jupyter-config/jupyter_notebook_config.d/convert_and_download.json"
-        ])
+            "jupyter-config/jupyter_notebook_config.d/convert_and_download.json",
+        ]),
     ],
     python_requires='~=3.6',
     zip_safe=False,

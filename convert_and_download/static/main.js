@@ -55,10 +55,10 @@ define([
         };
 
         $('<button/>')
+            .attr('title', 'Convert and download selected')
+            .attr('aria-label', 'Convert and download selected')
             .addClass('convert-download-button btn btn-default btn-xs')
-            .attr('title', 'Convert and Download Selected')
-            .attr('aria-label', 'Convert and Download Selected')
-            .text('Convert and Download Selected')
+            .text('Convert and download selected')
             .insertBefore('.shutdown-button')
             .css('display', 'none')
             .on('click', convert_and_download);
