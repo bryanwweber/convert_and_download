@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Bump dependency versions
+- Switch to GitHub Actions for building
+- Switch branch to main
 
 ### Fixed
 
