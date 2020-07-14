@@ -27,6 +27,7 @@ jobs:
     - name: Append conda-forge channel to conda config
       run: |
         conda config --append channels conda-forge
+        conda config --append channels bryanwweber
       shell: bash -l {0}
     - name: Install conda-build dependencies
       run: |
