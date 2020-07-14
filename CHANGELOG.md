@@ -7,17 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 <!-- markdownlint-disable MD022 MD024 MD032 -->
 
-## [Unreleased]
-### Added
-
+## [0.3.0] - 14-JUL-2019
 ### Changed
 - Bump dependency versions
 - Switch to GitHub Actions for building
 - Switch branch to main
-
-### Fixed
-
-### Removed
 
 ## [0.2.4] - 2019-JAN-19
 ### Changed
@@ -85,7 +79,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Convert and download multiple selected Notebooks
 - Automatically configure the extension to be used when installed
 
-[Unreleased]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.4...HEAD
+[0.3.0]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.4...v0.3.0
 [0.2.4]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/bryanwweber/convert_and_download/compare/v0.2.1...v0.2.2
